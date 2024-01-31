@@ -18,11 +18,23 @@ describe('EnvConfigService unit tests', () => {
     expect(sut).toBeDefined();
   });
 
-  it('should return the environment variable PORT', () => {
-    expect(sut.getAppPort()).toBe(3000);
+  describe('environment variable PORT', () => {
+    it('should return the environment variable PORT', () => {
+      expect(sut.getAppPort()).toBe(3000);
+    });
   });
 
-  it('should return the environment variable NODE_ENV', () => {
-    expect(sut.getNodeEnv()).toBe('test');
+  describe('environment variable NODE_ENV', () => {
+    it('should return the variable NODE_ENV of test', () => {
+      expect(sut.getNodeEnv()).toBe('test');
+    });
+
+    it('should not return the variable NODE_ENV of development', () => {
+      expect(sut.getNodeEnv()).not.toBe('development');
+    });
+
+    it('should not return the variable NODE_ENV of production', () => {
+      expect(sut.getNodeEnv()).not.toBe('production');
+    });
   });
 });
