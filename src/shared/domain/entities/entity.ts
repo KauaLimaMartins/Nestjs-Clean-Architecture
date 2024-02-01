@@ -9,11 +9,11 @@ export abstract class Entity<EntityProps = any> {
     this.props = props;
   }
 
-  get id() {
+  public get id() {
     return this._id;
   }
 
-  toJSON(): Required<{ id: string } & EntityProps> {
+  public toJSON(): Required<{ id: string } & EntityProps> {
     return {
       id: this._id,
       ...this.props,
