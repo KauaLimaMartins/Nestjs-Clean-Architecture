@@ -1,13 +1,13 @@
 import * as libClassValidator from 'class-validator';
-import { ClassValidatorFields } from '../../class-validator-fields';
+import { ClassFieldsValidator } from '../../class-validator-fields';
 
-class StubClassValidatorFields extends ClassValidatorFields<{
+class StubClassFieldsValidator extends ClassFieldsValidator<{
   field: string;
 }> {}
 
 describe('ClassValdiatorFields unit tests', () => {
   it('should initialize errors and validatedData variables with null', () => {
-    const sut = new StubClassValidatorFields();
+    const sut = new StubClassFieldsValidator();
 
     expect(sut.errors).toBeNull();
     expect(sut.validatedData).toBeNull();
@@ -22,7 +22,7 @@ describe('ClassValdiatorFields unit tests', () => {
       },
     ]);
 
-    const sut = new StubClassValidatorFields();
+    const sut = new StubClassFieldsValidator();
 
     expect(sut.validate(null)).toBeFalsy();
     expect(spyValidateSync).toHaveBeenCalled();
@@ -34,7 +34,7 @@ describe('ClassValdiatorFields unit tests', () => {
     const spyValidateSync = jest.spyOn(libClassValidator, 'validateSync');
     spyValidateSync.mockReturnValue([]);
 
-    const sut = new StubClassValidatorFields();
+    const sut = new StubClassFieldsValidator();
 
     expect(sut.validate({ field: 'value' })).toBeTruthy();
     expect(spyValidateSync).toHaveBeenCalled();

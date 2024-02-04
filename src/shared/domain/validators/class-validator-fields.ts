@@ -4,7 +4,7 @@ import {
   FieldsValidatorInterface,
 } from './fields-validator.interface';
 
-export abstract class ClassValidatorFields<ValidatedProps>
+export abstract class ClassFieldsValidator<ValidatedProps>
   implements FieldsValidatorInterface<ValidatedProps>
 {
   errors: FieldsErrors = null;
